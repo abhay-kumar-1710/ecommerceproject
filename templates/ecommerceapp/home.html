@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% load static %}
+
+<!-- BLOCK CONTENT -->
+{% block content %}
+
+<!-- BANNER -->
+<div class="banner">
+    <img src="{% static 'newimages/banner-1.jpg' %}" alt="">
+</div>
+
+<!-- CAROUSEL -->
+<div id="carouselExampleRide" class="carousel slide" data-bs-ride="true">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="{% static 'newimages/carousel-1.jpg' %}" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="{% static 'newimages/carousel-2.jpg' %}" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="{% static 'newimages/carousel-3.jpg' %}" class="d-block w-100" alt="...">
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+<!-- TOP DEALS -->
+<h2 class="sectionhead mx-4">Top Deals</h2>
+<div class="slideitems">
+    {% for obj in random_obj %}
+    <a href="{% url 'productdetails' obj.id %}">
+        <div class="slideitem">
+            <img src="{{obj.image.url}}" alt="">
+            <h5 class="my-2">{{obj.product_name|slice:":15"}}...</h5>
+            <p class="d-inline">Price : <p class="text-decoration-line-through d-inline">&#8377;{{obj.original_price}}</p> <h6 class="d-inline">&#8377;{{obj.discounted_price}}</h6></p>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+
+<!-- EXTRA TOP DEALS -->
+
+<div class="slideitems">
+    {% for obj in random_obj2 %}
+    <a href="{% url 'productdetails' obj.id %}">
+        <div class="slideitem">
+            <img src="{{obj.image.url}}" alt="">
+            <h5 class="my-2">{{obj.product_name|slice:":15"}}...</h5>
+            <p class="d-inline">Price : <p class="text-decoration-line-through d-inline">&#8377;{{obj.original_price}}</p> <h6 class="d-inline">&#8377;{{obj.discounted_price}}</h6></p>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+
+<!-- TOP BRANDED SHIRTS -->
+
+<h2 class="sectionhead mx-4">Top Branded Shirts</h2>
+<div class="topshirtsitems">
+    {% for obj in top_shirts %}
+    <a href="{% url 'productdetails' obj.id %}">
+        <div class="shirtitem">
+            <img src="{{obj.image.url}}" alt="">
+            <h4>{{obj.product_name|slice:":15"}}...</h4>
+            <p class="d-inline">Price : <p class="text-decoration-line-through d-inline">&#8377;{{obj.original_price}}</p> <h6 class="d-inline">&#8377;{{obj.discounted_price}}</h6></p>
+            <a href="{% url 'buynow' obj.id %}" class="btn btn-success">Buy Now</a>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+
+<!-- OFFERS ON MOBILES -->
+
+<h2 class="sectionhead mx-4">Offers On Mobiles</h2>
+<div class="topshirtsitems">
+    {% for obj in mobile_offers %}
+    <a href="{% url 'productdetails' obj.id %}">
+        <div class="shirtitem">
+            <img src="{{obj.image.url}}" alt="">
+            <h4>{{obj.product_name|slice:":15"}}...</h4>
+            <p class="d-inline">Price : <p class="text-decoration-line-through d-inline">&#8377;{{obj.original_price}}</p> <h6 class="d-inline">&#8377;{{obj.discounted_price}}</h6></p>
+            <a href="{% url 'buynow' obj.id %}" class="btn btn-success">Buy Now</a>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+
+{% endblock content %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="ordersoutercontainer">
+    <div class="orderwelcome">
+        <div class="list-group mt-2">
+            <h3 class="mx-2 profilewelcome text-center">Welcome {{request.user|capfirst}}</h3>
+            <a href="{% url 'profile' %}" class="text-center list-group-item list-group-item-action active" aria-current="true">
+              Orders
+            </a>
+        </div>
+    </div>
+    <div class="orderwelcome2">
+        <div class="alert alert-danger text-center fs-4 mx-5 my-5" role="alert">
+            YOU HAVE NO ITEMS IN ORDERS
+        </div>
+        
+        <div class="emptycartimg">
+            <img src={% static "newimages/emptycartimg.jpg" %} alt="">
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

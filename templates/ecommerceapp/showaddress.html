@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="profilecontainer">
+    <h3 class="mx-2 addresswelcome">Welcome Username</h3>
+    <div class="addressinnercontainer">
+        <div class="profileoptions">
+            <div class="list-group mt-2">
+                <a href="{% url 'profile' %}" class="list-group-item list-group-item-action" aria-current="true">
+                  Profile
+                </a>
+                <a href="{% url 'showaddress' %}" class="list-group-item list-group-item-action active">Address</a>
+              </div>
+        </div>
+        <div class="profileaddresscontainer">
+            {% if address %}
+            {% for obj in address %}
+            <div class="addresscard">
+                <h3>Address {{forloop.counter}}</h3>
+                <h6>Name : {{obj.name}}</h6>
+                <h6>Locality : {{obj.locality}}</h6>
+                <h6>City : {{obj.city}}</h6>
+                <h6>State : {{obj.state}}</h6>
+                <h6>Zipcode : {{obj.zipcode}}</h6>
+            </div>
+            {% endfor %}
+            {% else %}
+            <div class="alert alert-danger text-center my-3 fs-4 w-100" role="alert">
+                YOU HAVE NO ADDRESS TO SHOW
+            </div>
+            
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

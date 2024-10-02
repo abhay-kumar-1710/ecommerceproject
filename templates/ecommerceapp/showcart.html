@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<h3 class="text-center bg-primary text-white my-2 mx-3 py-2">E-commerce Shopping Cart</h3>
+
+
+<h4 class="mx-4">Cart Items</h4>
+<div class="showcartcontainer my-2 mx-3">
+    <div class="showcartinnercontainer1">
+        {% for obj in showcart %}
+        <div class="showcartitems p-3">
+            <img src="{{obj.product.image.url}}" alt="">
+            <div class="showcartdetails">
+                <h5 class="my-1">{{obj.product.product_name|slice:":45"}}...</h5>
+                <p class="my-1">{{obj.product.product_desc|slice:":65"}}...</p>
+                <p class="my-1">Quantity</p>
+                <div class="quantity">
+                    <a class="minus-cart btn p-0" pid="{{obj.product.id}}"><i class="fa-solid fa-square-minus"></i></a>
+                    <p class="my-0"><span id="quantity">{{obj.quantity}}</span></p>
+                    <a class="plus-cart btn p-0" pid="{{obj.product.id}}"><i class="fa-solid fa-square-plus"></i></a>
+                </div>
+                <div class="removebtnprice my-2">
+                    <a pid="{{obj.product.id}}" class="removecart btn btn-danger btn-sm">Remove Item</a>
+                    <strong>Rs:{{obj.product.discounted_price}}</strong>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="showcartinnercontainer2">
+        <div class="totalcontainer">
+            <h4 class="p-2 text-center">The Total Amount Of</h4>
+            <div class="amount px-3">
+                <h6>Amount</h6>
+                <h6>Rs.<span id="amount">{{amount}}</span></h6>
+            </div>
+            <div class="shipping px-3">
+                <h6>Shipping</h6>
+                <h6>Rs.70</h6>
+            </div>
+            <hr class="mx-3">
+            <div class="totalamount px-3">
+                <strong>Total (including VAT)</strong>
+                <strong>Rs. <span id="totalamount">{{totalamount}}</span></strong>
+            </div>
+            <div class="placeorderbtn">
+                <a href="{% url 'checkout' %}" class="btn btn-success w-100 mx-5 my-3">Place Order</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

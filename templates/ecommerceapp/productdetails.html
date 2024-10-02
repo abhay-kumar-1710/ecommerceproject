@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="productdetailcontainer">
+    <div class="productdetailimage">
+        <img src="{{product.image.url}}" alt="">
+    </div>
+    <div class="productdetails my-4">
+        <h3>{{product.product_name}}</h3>
+        <p class="mb-1">{{product.product_desc}}</p>
+        <p class="mb-1">{{product.brand}}</p>
+        {% if product.rating == 5.0 %}
+            <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+            </div>
+        {% elif product.rating == 4.5 %}
+            <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star-half-stroke"></i>
+            </div>
+        {% elif product.rating == 4.0 %}
+            <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+            </div>
+        {% elif product.rating == 3.5 %}
+            <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star-half-stroke"></i>
+                <i class="fa-regular fa-star"></i>
+            </div>
+        {% elif product.rating == 3.0 %}
+            <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+            </div>
+        {% elif product.rating == 2.5 %}
+            <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star-half-stroke"></i>
+                <i class="fa-regular fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+            </div>
+        {% elif product.rating == 2.0 %}
+            <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+            </div>
+        {% elif product.rating == 1.5 %}
+            <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star-half-stroke"></i>
+                <i class="fa-regular fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+            </div>
+        {% elif product.rating == 1.0 %}
+            <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+            </div>
+        {% endif %}
+        <h4 class="text-danger d-inline">-{{product.off_percentage}}%</h5>
+        <h4 class="d-inline mx-2"> &#8377;{{product.discounted_price}}</h5><br>
+        <div class="pricecontainer my-2">
+            <p class="d-inline mt-2">M.R.P.: <p class="d-inline mt-2 text-decoration-line-through"> &#8377;{{product.original_price}}</p>
+        </div>
+        <div class="productdetailbuttons my-2">
+            {% if items_already_in_cart %}
+            <a href="{% url 'showcart' %}" class="btn btn-warning">Go To Cart</a>
+            {% else %}
+            <a href="{% url 'addtocart' product.id %}" class="btn btn-warning">Add To Cart</a>
+            {% endif %}
+            <a href="{% url 'buynow' product.id %}" class="btn btn-success">Buy Now</a>
+        </div>
+        <h6>About This Item</h6>
+        <ul>
+            <li>Display: 6.67" FHD+ pOLED (1080x2400) Ultra-narrow bezels Display with 120Hz Refresh rate; 1000nits peak brightness; Corning Gorilla Glass 5 Display Protection</li>
+            <li>Processor:Mediatek Dimensity 6080 6nm Octa-core 5G processor for high performance ; Up to 2.4GHz; Upto 12GB RAM including 6GB Virtual RAM</li>
+            <li>Camera: 108MP 3X in-sensor zoom AI Triple Camera with 8MP Ultra Wide sensor and 2MP Macro camera| 16MP Front camera</li>
+            <li>Battery: 5000 mAh large battery with 33W fast charger in-box and Type-C connectivity</li>
+            <li>Memory, Storage & SIM: 6GB RAM | 128GB UFS 2.2 | Dual SIM (nano+nano) 5G</li>
+        </ul>
+    </div>
+</div>
+
+{% endblock content %}
+

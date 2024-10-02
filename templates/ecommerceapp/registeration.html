@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<!-- <h3 class="text-center bg-primary text-white mt-3 py-2 mx-3">E-commerceX</h3> -->
+
+<div class="logincontainer">
+    <div class="logininnercontainer">
+        <h3 class="loginhead text-white text-center">Signup/Registeration</h3>
+        <div class="loginform">
+          <form method='post'>
+            {% csrf_token %}
+            {% for fm in form %}
+              <div class="form-group mb-3">
+                {{fm.label_tag}} {{fm}} <small class="text-danger">{{fm.errors}} </small>
+              </div>
+            {% endfor %}
+            
+            <a href="{% url 'login' %}" class="createacc">Have An Account! Log In.</a>
+            <button type="submit" class="btn btn-primary w-100">Register</button>
+            {% if form.non_field_errors %}
+              {% for error in form.non_field_errors %}
+                <p class="alert alert-danger">{{error}}</p>
+              {% endfor %}
+            {% endif %}
+          </form>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

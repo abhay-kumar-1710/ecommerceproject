@@ -1,0 +1,152 @@
+@media (max-width:860px) {
+    .profileinnercontainer {
+        justify-content: center;
+    }
+    .profilewelcome {
+        text-align: center;
+    }
+    .profileform {
+        width: 95%;
+    }
+    .productdetailcontainer {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .productdetailimage img {
+        max-width: 100%;
+    }
+    .showcartcontainer {
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+    }
+    .showcartinnercontainer1, .showcartinnercontainer2 {
+        width: 100%;
+    }
+    
+}
+
+@media (max-width:860px) {
+    .checkoutoutercontainer {
+        flex-direction: column;
+    }
+    .checkoutordersummary {
+        width: 100%;
+    }
+    .checkoutaddress {
+        width: 100%;
+    }
+    .continuebtn {
+        justify-content: center;
+    } 
+}
+
+@media (max-width:950px) {
+    .ordersoutercontainer {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-inline: 10px;
+        padding-inline: 10px;
+    }
+    .orderwelcome {
+        width: 50%;
+    }
+    .orderwelcome2 {
+        width: 100%;
+    }
+    .orderdetailscard  img {
+        height: 150px;
+    }
+}
+
+@media (max-width:1140px) {
+    .logininnercontainer {
+        width: 80%;
+    }
+    .loginform {
+        padding-inline: 20px;
+    }
+}
+
+
+
+@media (max-width:1140px) {
+    .addressinnercontainer {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .addresswelcome {
+        text-align: center;
+    }
+    .addresscard {
+        padding-inline: 20px;
+        
+    }
+    .profileaddresscontainer {
+        width: 100%;
+    }
+    
+}
+
+
+
+
+@media (max-width:550px) {
+    .logininnercontainer {
+        width: 90%;
+        padding: 0px;
+        margin: 0;
+    }
+    .logincontainer {
+        padding-inline: 0px;
+    }
+    
+    .showcartitems img {
+        height: 100px;
+    }
+    .ordersoutercontainer{
+        padding-inline: 0px;
+    }
+    .orderdetailscard  img {
+        height: 100px;
+    }
+    .ordercard {
+        flex-direction: column;
+    }
+    .orderwelcome{
+        width: 80%;
+    }
+    .orderstatus {
+        width: 80%;
+        margin-top: 10px;
+    }
+}
+
+@media (max-width:370px) {
+    .removebtnprice {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .checkoutoutercontainer {
+        margin: 2px;
+        padding: 5px;
+    }
+    
+}
+
+@media (max-width:990px) { 
+    .nav-item {
+        text-align: center;
+        margin-inline: 0px;
+
+    }
+    .nav-item .logoutbtn {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+    }
+}

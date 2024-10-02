@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Top Wear{% endblock title %}
+
+{% block content %}
+
+<div class="selectlaptopcontainer">
+    <h3 class="text-center bg-primary text-white py-2">All Top Wears Are Here</h3>
+    <div class="filterhead">
+        <div class="dropdown">
+            <a class="btn btn-primary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Filter By
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{% url 'topwear' %}">All Top Wears</a></li>
+              <li><a class="dropdown-item" href="{% url 'topwear' 'roadster' %}">Roadster</a></li>
+              <li><a class="dropdown-item" href="{% url 'topwear' 'USPOLO' %}">US POLO</a></li>
+              <li><a class="dropdown-item" href="{% url 'topwear' 'lessthan1k' %}">Top Wears Lesser Than 1000</a></li>
+              <li><a class="dropdown-item" href="{% url 'topwear' 'greatthan1k' %}">Top Wears Greater Than 1000</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="laptopoptions">
+        <div class="alllaptops">
+            {% for obj in topwears %}
+            <a href="{% url 'productdetails' obj.id %}">
+                <div class="laptopcard">
+                    <img src="{{obj.image.url}}" alt="">
+                    <h4>{{obj.product_name|slice:":15"}}...</h4>
+                    <p class="d-inline m-0">Price : <p class="text-decoration-line-through d-inline m-0">&#8377;{{obj.original_price}}</p> <h6 class="m-0 d-inline">&#8377;{{obj.discounted_price}}</h6></p>
+                    <a href="{% url 'buynow' obj.id %}" class="btn btn-success">Buy Now</a>
+                </div>
+            </a>
+                {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="checkoutoutercontainer">
+    <div class="checkoutordersummary">
+        <h3>Order Summary</h3>
+        <div class="checkoutordersummaryinner">
+            <div class="checkoutitems">
+                {% for obj in showcart %}
+                <div class="chectoutitemcard">
+                    <div class="checkoutitemscarddetails">
+                        <h4 class='m-0'>{{obj.product.product_name|slice:":45"}}...</h4>
+                        <p class="m-0">Quantity : {{obj.quantity}}</p>
+                        <p class="m-0"><Strong>Price:Rs.{{obj.product.discounted_price}}</Strong></p>
+                    </div>
+                    <div class="checkoutitemscardimg">
+                        <img src="{{obj.product.image.url}}" alt="ok">
+                    </div>
+                </div>
+                <hr>
+                {% endfor %}
+            </div>
+        </div>
+        <strong>Total Cost: Rs. {{amount}}(All Items included) + Rs.70(Shipping) = Rs.{{totalamount}}</strong>
+        <p>Terms and Condtions: Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi accusamus dicta dolorum. Corrupti perferendis voluptatum ut neque adipisci aliquam aliquid, mollitia impedit dolore laudantium tempore asperiores nulla sequi accusantium tenetur.</p>
+    </div>
+    <div class="checkoutaddress">
+        <h3>Select Shipping Address</h3>
+        <div class="checkoutaddressoutercontainer">
+            {% if customer %}
+            {% for obj in customer %}
+            <div class="checkoutaddresscard my-2">
+                <h4>{{obj.name}}</h4>
+                <p>{{obj.locality}}, {{obj.city}}, {{obj.state}}-{{obj.zipcode}}</p>
+                <form action="/paymentdone" >
+                    <input class="form-check-input" type="radio" name="custid" id="address{{forloop.counter}}" value="{{obj.id}}">
+                    <label class="form-check-label" for="address{{forloop.counter}}"><strong>Address {{forloop.counter}}</strong></label><hr>
+                </div>
+                {% endfor %}
+                <h3 class="my-2">Payment</h3>
+                <div class="paymentcontainer">
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Card Holder Name</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Eg: Abhay Kumar" required>
+                      </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Card Number</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="4242 4242 4242 4242" required>
+                    </div>
+                        <div class="row g-3">
+                        <div class="col-md-3">
+                            <label for="inputCity" class="form-label">Expiry Month</label>
+                            <input type="text" class="form-control" id="inputCity" placeholder="Month" required>
+                          </div>
+                          <div class="col-md-3">
+                            <label for="inputState" class="form-label">Expiry Year</label>
+                            <input type="text" class="form-control" id="inputCity" placeholder="Year" required>
+                          </div>
+                          <div class="col-md-3">
+                            <label for="inputZip" class="form-label">CVV</label>
+                            <input type="text" class="form-control" id="inputZip" placeholder="CVV" required>
+                          </div>
+                          <div class="col-md-3">
+                            <label for="inputZip" class="form-label">OTP</label>
+                            <input type="text" class="form-control" id="inputZip" placeholder="Get OTP" required>
+                          </div>
+                        </div> 
+                </div>
+                <strong>You Can Give Fake Details To Get Orders, this form doesn't save the data. <br>This is Only For Demo Purpose. </strong>
+                <div class="continuebtn">
+                    <button type="submit" class="btn btn-warning my-3">Continue</button>
+                </div>
+            </form>
+            {% else %}
+            <div class="alert alert-danger text-center my-3 fs-4 w-100" role="alert">
+                YOU HAVE NO ADDRESS TO SELECT
+            </div>
+            <a href="{% url 'profile' %}" class="btn btn-warning w-100">
+                Add Address
+              </a>
+            {% endif %}
+        </div>
+
+    </div>
+</div>
+
+{% endblock content %}

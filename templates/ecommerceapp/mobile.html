@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Mobiles{% endblock title %}
+
+{% block content %}
+
+<div class="selectlaptopcontainer">
+    <h3 class="text-center bg-primary text-white py-2">All Mobiles Are Here</h3>
+    <div class="filterhead">
+        <div class="dropdown">
+            <a class="btn btn-primary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Filter By
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{% url 'mobile' %}">All Mobiles</a></li>
+              <li><a class="dropdown-item" href="{% url 'mobile' 'redmi' %}">Redmi Mobile</a></li>
+              <li><a class="dropdown-item" href="{% url 'mobile' 'apple' %}">Apple Mobile</a></li>
+              <li><a class="dropdown-item" href="{% url 'mobile' 'lessthan25k' %}">Mobiles Lesser Than 25,000</a></li>
+              <li><a class="dropdown-item" href="{% url 'mobile' 'greatthan25k' %}">Mobiles Lesser Than 25,000</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="laptopoptions">
+        <div class="alllaptops">
+            {% for obj in mobiles %}
+            <a href="{% url 'productdetails' obj.id %}">
+                <div class="laptopcard">
+                    <img src="{{obj.image.url}}" alt="">
+                    <h4>{{obj.product_name|slice:":15"}}...</h4>
+                    <p class="d-inline m-0">Price : <p class="d-inline text-decoration-line-through m-0">&#8377;{{obj.original_price}}</p> <h6 class="d-inline m-0">&#8377;{{obj.discounted_price}}</h6></p>
+                    <a href="{% url 'buynow' obj.id %}" class="btn btn-success">Buy Now</a>
+                </div>
+            </a>
+                {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<h3 class="text-center bg-primary text-white my-2 mx-3 py-2">E-commerce Shopping Cart</h3>
+
+
+<div class="alert alert-danger text-center fs-4 mx-5 my-5" role="alert">
+    YOU HAVE NO ITEMS IN CHECK OUT
+</div>
+
+<div class="emptycartimg">
+    <img src={% static "newimages/emptycartimg.jpg" %} alt="">
+</div>
+
+{% endblock content %}
