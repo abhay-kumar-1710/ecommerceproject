@@ -7,9 +7,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import JsonResponse
 from django.db.models import Q
 from django.conf import settings
-import stripe # type: ignore
 
-stripe.api_key = settings.STRIPE_SECRET_KEY
+
+
 
 # Create your views here.
 
